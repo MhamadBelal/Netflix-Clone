@@ -16,6 +16,7 @@ function ModalMovie(props) {
             console.log(error)
         })
         // console.log(item)
+        props.handleClose();
     }
 
     const posterPathURL = 'http://image.tmdb.org/t/p/w500/'
