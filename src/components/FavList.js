@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ModalUpdate from './ModalUpdate';
+import axios from 'axios';
 
 function FavList() {
 
@@ -23,6 +24,21 @@ function FavList() {
                         console.log(data)
                     })
             })
+    }
+
+    const deleteFavMovies =async (item)=>{
+            const serverURL = `http://localhost:3001/deleteMovie/${item.id}`;
+            const result = await axios.delete(serverURL , item )
+            console.log(item)
+            const serverURL2 = `http://localhost:3001/getMovies`;
+            fetch(serverURL2)
+                .then((response) => {
+                    response.json()
+                        .then(data => {
+                            setFavArr(data)
+                            console.log(data)
+                        })
+                }) 
     }
 
 
@@ -64,7 +80,7 @@ function FavList() {
                                 {item.popularity}
                             </Card.Text>
                             <Button variant="success" onClick={() => { showUpdateModal(item) }}>Update</Button>
-                            <Button variant="danger" onClick={() => { showUpdateModal(item) }}>Delete</Button>
+                            <Button variant="danger" onClick={() => { deleteFavMovies(item) }}>Delete</Button>
                         </Card.Body>
                     </Card>
                 )

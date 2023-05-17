@@ -21,10 +21,11 @@ function ModalUpdate(props){
         const result = await axios.put(serverURL,obj);
         console.log('done',result.data)
 
+        props.takeNewDataFromUpdatedModal(result.data)
         // To close our model 
         props.closeUpdateModal();
 
-        props.takeNewDataFromUpdatedModal(result.data)
+        
     }
 
     return(
@@ -59,9 +60,6 @@ function ModalUpdate(props){
                 <Modal.Footer>
                     <Button variant="secondary" onClick={props.closeUpdateModal}>
                         Close
-                    </Button>
-                    <Button variant="primary">
-                        Save Changes
                     </Button>
                 </Modal.Footer>
             </Modal>
