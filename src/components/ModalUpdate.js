@@ -17,7 +17,7 @@ function ModalUpdate(props){
         }
         console.log(obj)
         
-        const serverURL = `http://localhost:3001/updateMovie/${props.clickedMovie.id}`;
+        const serverURL = `${process.env.REACT_APP_serverURL}/updateMovie/${props.clickedMovie.id}`;
         const result = await axios.put(serverURL,obj);
         console.log('done',result.data)
 

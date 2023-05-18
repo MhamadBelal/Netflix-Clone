@@ -5,7 +5,7 @@ function Home() {
 
     const [terndingMoviesData, setTerndingMoviesData] = useState([])
     const getAllTrendingMovies = () => {
-        const serverURL = `http://localhost:3001/trending`;
+        const serverURL = `${process.env.REACT_APP_serverURL}/trending`;
     
         fetch(serverURL)
             .then(response => {
