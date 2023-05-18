@@ -15,7 +15,7 @@ function FavList() {
 
 
     const getFavMovies = () => {
-        const serverURL = `http://localhost:3001/getMovies`;
+        const serverURL = `${process.env.REACT_APP_serverURL}/getMovies`;
         fetch(serverURL)
             .then((response) => {
                 response.json()
@@ -27,10 +27,10 @@ function FavList() {
     }
 
     const deleteFavMovies =async (item)=>{
-            const serverURL = `http://localhost:3001/deleteMovie/${item.id}`;
+            const serverURL = `${process.env.REACT_APP_serverURL}/deleteMovie/${item.id}`;
             const result = await axios.delete(serverURL , item )
             console.log(item)
-            const serverURL2 = `http://localhost:3001/getMovies`;
+            const serverURL2 = `${process.env.REACT_APP_serverURL}/getMovies`;
             fetch(serverURL2)
                 .then((response) => {
                     response.json()
