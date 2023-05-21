@@ -3,12 +3,16 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image'
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import { useState } from 'react';
 
 function ModalMovie(props) {
 
+    const [comment, setComment] = useState('');
+
     const addToFav = (item) =>{
         const serverURL = `${process.env.REACT_APP_serverURL}/addMovie`;
-        axios.post(serverURL , item )
+        const dataMovie = { ...item, comment: comment };
+        axios.post(serverURL , dataMovie )
         .then(response=>{
             console.log(response.data)
         })
@@ -35,7 +39,8 @@ function ModalMovie(props) {
                         controlId="exampleForm.ControlTextarea1"
                     >
                         <Form.Label>Type your Comment</Form.Label>
-                        <Form.Control as="textarea" rows={3} />
+                        <Form.Control as="textarea" rows={3} name="comment" value={comment}
+                                onChange={(e) => setComment(e.target.value)}/>
                     </Form.Group>
                     </Form>
                 </Modal.Body>

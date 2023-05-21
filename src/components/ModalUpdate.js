@@ -13,7 +13,8 @@ function ModalUpdate(props){
             name : e.target.name.value,
             character : e.target.image.value,
             original_name : e.target.date.value,
-            popularity : e.target.overview.value
+            popularity : e.target.overview.value,
+            comment : e.target.comment.value
         }
         console.log(obj)
         
@@ -52,6 +53,10 @@ function ModalUpdate(props){
                         <Form.Group className="mb-3">
                             <Form.Label>Overview</Form.Label>
                             <Form.Control name="overview" type="text" defaultValue={props.clickedMovie.popularity}/>
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Comment</Form.Label>
+                            <Form.Control name="comment" type="text" defaultValue={props.clickedMovie.comment}/>
                         </Form.Group>
 
                         <Button variant="primary" type="submit">Submit</Button>

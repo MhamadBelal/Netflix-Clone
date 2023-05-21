@@ -79,6 +79,9 @@ function FavList() {
                             <Card.Text>
                                 {item.popularity}
                             </Card.Text>
+                            <Card.Text>
+                                {item.comment}
+                            </Card.Text>
                             <Button variant="success" onClick={() => { showUpdateModal(item) }}>Update</Button>
                             <Button variant="danger" onClick={() => { deleteFavMovies(item) }}>Delete</Button>
                         </Card.Body>
